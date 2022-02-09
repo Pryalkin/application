@@ -74,8 +74,6 @@ public class HomeController {
             line = "authorizationSuccess";
             personalDataService.update(loginPasswordService.check(login, password));
             Security.setRole(personalDataService.getUser(loginPasswordService.check(login, password)));
-            model.put("some", Security.getRole());
-            model.put("flag", personalDataService.check(Security.getRole()));
         } else if (flag && !status) {
             line = "notSuccess2";
         }
@@ -105,7 +103,6 @@ public class HomeController {
                 personalDataService.block(listId);
             }
             model.put("some", personalDataService.getAll().toString().replace("[", "").replace(",", "").replace("]", ""));
-            model.put("flag", personalDataService.check(Security.getRole()));
         } else {
             Security.setRole(0L);
             line = "failure";
